@@ -1,0 +1,14 @@
+.list-of-items {
+  list-style-type: none;
+}
+.category-items {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  font-size: 22px;
+  font-weight: 500;
+}
+.button-new {
+  color: red;
+  text-decoration: underline;
+}

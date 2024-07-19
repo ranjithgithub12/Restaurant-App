@@ -1,0 +1,15 @@
+.resturant-app {
+  min-height: 100vh;
+  padding: 10px;
+}
+.unorder-list-items {
+  padding: 00px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 10vh;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.unorder-food-items {
+  padding: 00px;
+}

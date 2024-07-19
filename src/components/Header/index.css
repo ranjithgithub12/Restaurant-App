@@ -1,0 +1,19 @@
+.header {
+  min-height: 10vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.resturant-name {
+  font-family: 'Roboto';
+  font-size: 25px;
+}
+
+.order-container {
+  display: flex;
+  align-items: center;
+}
+.order-content{
+  margin-right: 10px;
+}

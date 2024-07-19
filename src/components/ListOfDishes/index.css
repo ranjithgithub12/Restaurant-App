@@ -1,0 +1,62 @@
+.list-of-food-items {
+  list-style-type: none;
+  border: 1px solid;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  margin: 5px;
+}
+.food-details-container {
+  align-self: flex-start;
+  margin-left: 10px;
+  width: 60%;
+}
+.food-name {
+  font-family: 'Roboto';
+  font-size: 25px;
+  font-weight: 500;
+}
+.food-currency {
+  font-size: 18px;
+  font-family: 'Roboto';
+}
+.food-discription {
+  font-size: 15px;
+  font-family: 'Roboto';
+}
+.not-available {
+  color: red;
+  font-family: 'Roboto';
+  font-size: 12px;
+}
+.add-food-button-container {
+  background-color: green;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+}
+.button {
+  border: none;
+  color: white;
+  background-color: transparent;
+  margin: 3px;
+}
+.food-count {
+  color: white;
+  font-size: 15px;
+}
+.calories {
+  color: #d6a318;
+  width: 15%;
+}
+.food-image {
+  width: 150px;
+}
+.add-on-cat {
+  color: #1a2be8;
+  font-family: 'Roboto';
+}
