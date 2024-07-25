@@ -4,7 +4,7 @@ import {FaDotCircle} from 'react-icons/fa'
 
 const ListOfDishes = ({
   totalDishes,
-  dishCount,
+  dishQuantity,
   incrementDishCount,
   decrementDishCount,
 }) => {
@@ -40,7 +40,7 @@ const ListOfDishes = ({
   return (
     <li className="list-of-food-items">
       {dishAvailability ? (
-        <FaDotCircle color="green" />
+        <FaDotCircle color="green" className="available-symbol" />
       ) : (
         <FaDotCircle color="red" />
       )}
@@ -57,7 +57,7 @@ const ListOfDishes = ({
             >
               -
             </button>
-            <p className="food-count">{dishCount}</p>
+            <p className="food-count">{dishQuantity}</p>
             <button
               className="button"
               onClick={() => incrementDishCount(totalDishes.dish_id)}
