@@ -1,8 +1,16 @@
 import {Component} from 'react'
+import Loader from 'react-loader-spinner'
+
 import Header from '../Header'
 import './index.css'
 import ListOfCategory from '../ListOfCategory'
 import ListOfDishes from '../ListOfDishes'
+
+const apiStatusConstants = {
+  initial: 'INITIAL',
+  success: 'SUCCESS',
+  inProgress: 'IN_PROGRESS',
+}
 
 class Dishs extends Component {
   state = {
@@ -11,6 +19,7 @@ class Dishs extends Component {
     nameOfResturant: '',
     isActiveId: null,
     cartCount: 0,
+    apiStatus: apiStatusConstants.initial,
     dishQuantity: {}, // Track counts for each dish
   }
 
@@ -19,6 +28,10 @@ class Dishs extends Component {
   }
 
   getItemDetails = async () => {
+    this.setState({
+      apiStatus: apiStatusConstants.inProgress,
+    })
+
     const apiUrl =
       'https://apis2.ccbp.in/restaurant-app/restaurant-menu-list-details'
     const options = {
@@ -53,6 +66,7 @@ class Dishs extends Component {
       listOfCategory: formatingCategory,
       isActiveId: formatingCategory[0].menuCategoryId,
       nameOfResturant: storeName,
+      apiStatus: apiStatusConstants.success,
     })
   }
 
@@ -93,7 +107,7 @@ class Dishs extends Component {
     })
   }
 
-  render() {
+  renderSuccessView = () => {
     const {
       listOfCategory,
       isActiveId,
@@ -104,7 +118,7 @@ class Dishs extends Component {
     const filterTabId = this.getFilterTabId()
 
     return (
-      <div className="resturant-app">
+      <div>
         <Header cafeName={nameOfResturant} cartCount={cartCount} />
         <ul className="unorder-list-items">
           {listOfCategory.map(eachItem => (
@@ -129,6 +143,29 @@ class Dishs extends Component {
         </ul>
       </div>
     )
+  }
+
+  renderLoaderView = () => (
+    <div className="products-details-loader-container" data-testid="loader">
+      <Loader type="ThreeDots" color="#0b69ff" height="50" width="50" />
+    </div>
+  )
+
+  renderRestaruantDishes = () => {
+    const {apiStatus} = this.state
+
+    switch (apiStatus) {
+      case apiStatusConstants.success:
+        return this.renderSuccessView()
+      case apiStatusConstants.inProgress:
+        return this.renderLoaderView()
+      default:
+        return null
+    }
+  }
+
+  render() {
+    return <div className="resturant-app">{this.renderRestaruantDishes()}</div>
   }
 }
 

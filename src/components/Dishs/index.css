@@ -13,3 +13,9 @@
 .unorder-food-items {
   padding: 00px;
 }
+.products-details-loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+}
