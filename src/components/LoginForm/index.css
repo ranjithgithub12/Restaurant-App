@@ -1,0 +1,43 @@
+.login-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoWa9afYFV22BiXfPfH_sl_U2bU4SGxMH6Jw&s');
+}
+.login-form-container {
+  border-radius: 5px;
+  padding: 20px;
+  width: 500px;
+}
+.login-heading {
+  text-align: center;
+  font-family: 'Roboto';
+  color: green;
+}
+.input-container {
+  display: flex;
+  flex-direction: column;
+}
+.input-label {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 16px;
+  font-weight: 500;
+  font-family: 'Roboto';
+}
+.input-box {
+  padding: 5px;
+}
+.login-button {
+  background-color: blue;
+  color: white;
+  padding: 8px 15px 8px 15px;
+  border: none;
+  margin-top: 10px;
+  text-align: center;
+  border-radius: 5px;
+}
+.error-msg {
+  color: red;
+}

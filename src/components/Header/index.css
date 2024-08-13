@@ -17,3 +17,16 @@
 .order-content {
   margin-right: 10px;
 }
+.link-menu {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+.logout-button {
+  margin-left: 20px;
+  border: none;
+  color: white;
+  padding: 8px 15px 8px 15px;
+  background-color: blue;
+  border-radius: 5px;
+}
