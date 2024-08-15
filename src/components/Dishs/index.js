@@ -6,6 +6,8 @@ import './index.css'
 import ListOfCategory from '../ListOfCategory'
 import ListOfDishes from '../ListOfDishes'
 
+import CartContext from '../../context/CartContext'
+
 const apiStatusConstants = {
   initial: 'INITIAL',
   success: 'SUCCESS',
@@ -118,30 +120,38 @@ class Dishs extends Component {
     const filterTabId = this.getFilterTabId()
 
     return (
-      <div>
-        <Header cafeName={nameOfResturant} cartCount={cartCount} />
-        <ul className="unorder-list-items">
-          {listOfCategory.map(eachItem => (
-            <ListOfCategory
-              eachItem={eachItem}
-              key={eachItem.menuCategoryId}
-              isActive={isActiveId === eachItem.menuCategoryId}
-              categorySelectItem={this.selectedItem}
-            />
-          ))}
-        </ul>
-        <ul className="unorder-food-items">
-          {filterTabId.map(eachItem => (
-            <ListOfDishes
-              totalDishes={eachItem}
-              key={eachItem.dish_id}
-              dishQuantity={dishQuantity[eachItem.dish_id] || 0}
-              incrementDishCount={this.incrementDishCount}
-              decrementDishCount={this.decrementDishCount}
-            />
-          ))}
-        </ul>
-      </div>
+      <CartContext.Consumer>
+        {value => {
+          const {addCartItem} = value
+          return (
+            <div>
+              <Header cafeName={nameOfResturant} />
+              <ul className="unorder-list-items">
+                {listOfCategory.map(eachItem => (
+                  <ListOfCategory
+                    eachItem={eachItem}
+                    key={eachItem.menuCategoryId}
+                    isActive={isActiveId === eachItem.menuCategoryId}
+                    categorySelectItem={this.selectedItem}
+                  />
+                ))}
+              </ul>
+              <ul className="unorder-food-items">
+                {filterTabId.map(eachItem => (
+                  <ListOfDishes
+                    totalDishes={eachItem}
+                    key={eachItem.dish_id}
+                    dishQuantity={dishQuantity[eachItem.dish_id] || 0}
+                    incrementDishCount={this.incrementDishCount}
+                    decrementDishCount={this.decrementDishCount}
+                    addCartItem={addCartItem}
+                  />
+                ))}
+              </ul>
+            </div>
+          )
+        }}
+      </CartContext.Consumer>
     )
   }
 

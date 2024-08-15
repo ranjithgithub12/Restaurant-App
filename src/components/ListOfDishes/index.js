@@ -7,6 +7,7 @@ const ListOfDishes = ({
   dishQuantity,
   incrementDishCount,
   decrementDishCount,
+  addCartItem,
 }) => {
   const foodItem = {
     addonCat: totalDishes.addonCat,
@@ -36,6 +37,11 @@ const ListOfDishes = ({
   } = foodItem
 
   const lengthAddOnCat = addonCat.length > 0
+  const addToCartButton = dishQuantity >= 1
+
+  const addToCart = () => {
+    addCartItem({...foodItem, dishQuantity})
+  }
 
   return (
     <li className="list-of-food-items">
@@ -70,6 +76,11 @@ const ListOfDishes = ({
         )}
         {lengthAddOnCat && (
           <p className="add-on-cat">Customizations available</p>
+        )}
+        {addToCartButton && (
+          <button type="button" onClick={addToCart}>
+            ADD TO CART
+          </button>
         )}
       </div>
       <img className="food-image" src={dishImage} alt={dishName} />

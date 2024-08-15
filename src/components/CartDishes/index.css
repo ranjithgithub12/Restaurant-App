@@ -1,0 +1,28 @@
+.list-of-dishes {
+  list-style-type: none;
+  padding: 20px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid;
+  margin-top: 5px;
+}
+.cart-image {
+  width: 75px;
+}
+.dish-heading-cart {
+  font-size: 20px;
+}
+.dish-price-cart {
+  font-size: 20px;
+}
+.cart-increment-decrement {
+  display: flex;
+  justify-content: center;
+}
+.cart-incre-decre-button {
+  border: none;
+  cursor: pointer;
+}
