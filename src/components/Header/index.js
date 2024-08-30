@@ -18,18 +18,20 @@ const Header = props => {
   return (
     <CartContext.Consumer>
       {value => {
-        const {cartList} = value
+        const {cartList, nameOfResturant} = value
         const lengthOfCart = cartList.length
         return (
           <div className="header">
             <Link to="/" className="link-menu">
-              <h1 className="resturant-name">{cafeName}</h1>
+              <h1 className="resturant-name">{nameOfResturant}</h1>
             </Link>
             <div className="order-container">
               <Link to="/cart" className="link-menu">
-                <p className="order-content">My Orders</p>
-                <IoMdCart size={25} />
-                <p>{lengthOfCart}</p>
+                <button type="button" data-testid="cart" className="link-menu">
+                  <p className="order-content">My Orders</p>
+                  <IoMdCart size={25} />
+                  <p>{lengthOfCart}</p>
+                </button>
               </Link>
               <button className="logout-button" onClick={onClickLogoutButton}>
                 Logout

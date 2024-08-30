@@ -42,7 +42,7 @@ class Dishs extends Component {
 
     const response = await fetch(apiUrl)
     const data = await response.json()
-    const formatingData = data.map(eachItem => ({
+    const formattedData = data.map(eachItem => ({
       branchName: eachItem.branch_name,
       nexturl: eachItem.nexturl,
       restaurantId: eachItem.restaurant_id,
@@ -53,9 +53,9 @@ class Dishs extends Component {
       tableName: eachItem.table_name,
     }))
 
-    const storeName = formatingData[0].restaurantName
+    const storeName = formattedData[0].restaurantName
 
-    const formatingCategory = formatingData[0].tableMenuList.map(eachItem => ({
+    const formattedCategory = formattedData[0].tableMenuList.map(eachItem => ({
       categoryDishes: eachItem.category_dishes,
       menuCategory: eachItem.menu_category,
       menuCategoryId: eachItem.menu_category_id,
@@ -64,12 +64,16 @@ class Dishs extends Component {
     }))
 
     this.setState({
-      listOfItem: formatingData,
-      listOfCategory: formatingCategory,
-      isActiveId: formatingCategory[0].menuCategoryId,
+      listOfItem: formattedData,
+      listOfCategory: formattedCategory,
+      isActiveId: formattedCategory[0].menuCategoryId,
       nameOfResturant: storeName,
       apiStatus: apiStatusConstants.success,
     })
+
+    // Update the context with the restaurant name using destructuring
+    const {setNameOfResturant} = this.context
+    setNameOfResturant(storeName)
   }
 
   selectedItem = tabId => {
@@ -125,7 +129,7 @@ class Dishs extends Component {
           const {addCartItem} = value
           return (
             <div>
-              <Header cafeName={nameOfResturant} />
+              <Header cafeName={nameOfResturant} cartCount={cartCount} />
               <ul className="unorder-list-items">
                 {listOfCategory.map(eachItem => (
                   <ListOfCategory
@@ -178,5 +182,7 @@ class Dishs extends Component {
     return <div className="resturant-app">{this.renderRestaruantDishes()}</div>
   }
 }
+
+Dishs.contextType = CartContext
 
 export default Dishs

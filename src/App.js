@@ -12,6 +12,7 @@ import CartContext from './context/CartContext'
 class App extends Component {
   state = {
     cartList: [],
+    nameOfResturant: '',
   }
 
   addCartItem = dishes => {
@@ -83,13 +84,19 @@ class App extends Component {
     this.setState({cartList: updatedCartList})
   }
 
+  setNameOfResturant = name => {
+    this.setState({nameOfResturant: name})
+  }
+
   render() {
-    const {cartList} = this.state
+    const {cartList, nameOfResturant} = this.state
     console.log(cartList)
     return (
       <CartContext.Provider
         value={{
           cartList,
+          nameOfResturant, // Add this line
+          setNameOfResturant: this.setNameOfResturant,
           addCartItem: this.addCartItem,
           removeCartItem: this.removeCartItem,
           removeAllCartItems: this.removeAllCartItems,
